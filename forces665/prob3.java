@@ -29,15 +29,19 @@ public class prob3{
                         map.put(new pair(arr[i],arr[j]),gc);
                     }
                 }
+                System.out.println(map);
+                if(check(arr)){
+                System.out.println("YES");
+                continue;}
             if(solve(0,n,arr,min,1,map))
-            System.out.println("Yes");
+            System.out.println("YES");
             else 
-            System.out.println("No");
+            System.out.println("NO");
         }
     }
    
     public static boolean solve(int idx,int n,long[]arr,long min,int idx2, HashMap<pair,Long>map){
-        if(idx>=n-1){
+        if(idx==n-1){
             if(check(arr))
             return true;
             else
@@ -49,7 +53,7 @@ public class prob3{
             for(int j=idx2;j<n;j++){
                 long a=arr[i];
                 long b=arr[j];
-                if(map.containsKey(new pair(a,b))){
+                if(map.containsKey(new pair(a,b))||map.containsKey(new pair(b,a))){
                     long temp1=arr[i];
                     long temp2=arr[j];
                     arr[i]=temp2;

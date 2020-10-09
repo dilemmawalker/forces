@@ -1,4 +1,8 @@
-Yes
-No
-No
-No
+{}
+YES
+{prob3$pair@6bc7c054=2, prob3$pair@232204a1=2, prob3$pair@4aa298b7=2, prob3$pair@42a57993=2, prob3$pair@75b84c92=2}
+NO
+{}
+YES
+{prob3$pair@1f32e575=2, prob3$pair@28a418fc=2, prob3$pair@5305068a=2}
+NO
