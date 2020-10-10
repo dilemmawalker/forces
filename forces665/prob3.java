@@ -16,17 +16,18 @@ public class prob3{
             long min=1000000000;
             int n=scn.nextInt();
             long[]arr=new long[n];
-            HashMap<pair,Long>map=new HashMap<>();
+            HashMap<String,Long>map=new HashMap<>();
             for(int i=0;i<n;i++){
                 arr[i]=scn.nextInt();
                 min=Math.min(min,arr[i]);
             }
             for(int i=0;i<n;i++){
                     for(int j=i+1;j<n;j++){
-                        // if(arr[i]>arr[j])
-                        long gc=gcd(arr[j],arr[i]);
-                        if(gc==min)
-                        map.put(new pair(arr[i],arr[j]),gc);
+                       long gc=gcd(arr[i],arr[j]);
+                       if(gc==min){
+                       String str=arr[i]+" "+arr[j];
+                       map.put(str,gc);
+                       }
                     }
                 }
                 System.out.println(map);
@@ -40,7 +41,7 @@ public class prob3{
         }
     }
    
-    public static boolean solve(int idx,int n,long[]arr,long min,int idx2, HashMap<pair,Long>map){
+    public static boolean solve(int idx,int n,long[]arr,long min,int idx2,HashMap<String,Long>map){
         if(idx==n-1){
             if(check(arr))
             return true;
@@ -53,24 +54,33 @@ public class prob3{
             for(int j=idx2;j<n;j++){
                 long a=arr[i];
                 long b=arr[j];
-                if(map.containsKey(new pair(a,b))||map.containsKey(new pair(b,a))){
-                    long temp1=arr[i];
-                    long temp2=arr[j];
-                    arr[i]=temp2;
-                    arr[j]=temp1;
+
+                String str=a+" "+b;
+                if(map.containsKey(str)){
+                    // long temp1=arr[i];
+                    // long temp2=arr[j];
+                    arr[i]=b;
+                    arr[j]=a;
                     if(j==n-1)
                     res=res||solve(i+1,n,arr,min,i+2,map);
                     else
                     res=res||solve(i,n,arr,min,j+1,map);
-                    arr[i]=temp1;
-                    arr[j]=temp2;
+                    arr[i]=a;
+                    arr[j]=b;
+                 }
                 }
-            }
+                // if(j==n-1)
+                // res=res||solve(i+1,n,arr,min,i+2,map);
+                // else
+                res=res||solve(i+1,n,arr,min,i+2,map);            
         }
         return res;
     }
     public static boolean check(long[]arr){
         int n=arr.length;
+        for(int i=0;i<n;i++)
+        System.out.print(arr[i]+" ");
+        System.out.println();
         for(int i=0;i<n-1;i++){
             long a=arr[i];
             long b=arr[i+1];
