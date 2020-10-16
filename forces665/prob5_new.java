@@ -7,9 +7,9 @@ public class prob5_new{
         int m=scn.nextInt();
         int n1=n;
         pair[]hor=new pair[1000001];
-        ArrayList<Integer>[]ver=new ArrayList[1000002];
+        LinkedList<Integer>[]ver=new LinkedList[1000002];
         for(int i=0;i<1000002;i++){
-        ver[i]=new ArrayList<Integer>();
+        ver[i]=new LinkedList<Integer>();
         if(i<=1000000)
         hor[i]=new pair(0,0);
         }
@@ -29,13 +29,13 @@ public class prob5_new{
             int c=scn.nextInt();
             if((b==0 && c==1000000)||(b==1000000 && c==0))
             count++;
-            ver[b].add(a);
-            ver[c+1].add(-a);
+            ver[b].addLast(a);
+            ver[c+1].addLast(-a);
         }
         fenwicktree obj=new fenwicktree(1000001);
         for(int i=0;i<=1000000;i++){
-            for(int j=0;j<ver[i].size();j++){
-                int aa=ver[i].get(j);
+            while(ver[i].size()!=0){
+                int aa=ver[i].removeFirst();
                 if(aa>0){
                     obj.update_diff(1,aa);
                 }
