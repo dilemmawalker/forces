@@ -9,7 +9,7 @@ public class prob4{
             this.v=v;
             this.w=w;
         }
-    }//
+    }
     public static ArrayList<pair>[]graph;
     public static void main(String[]args){
         int t=scn.nextInt();
