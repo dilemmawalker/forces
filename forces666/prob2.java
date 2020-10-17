@@ -6,7 +6,7 @@ public class prob2{
     public static void main(String[]args){
         int n=scn.nextInt();
         int[]arr=new int[n];
-        int total=0;
+        long total=0;
         for(int i=0;i<n;i++){
             arr[i]=scn.nextInt();
             total+=arr[i];
@@ -16,34 +16,55 @@ public class prob2{
         }
         else{
         Arrays.sort(arr);
+        //
+        for(int i=0;i<n;i++)
+        System.out.print(arr[i]+" ");
+        System.out.println();
+        //
         int no=1;
-        int to=total;
-        int min=2;
+        int min=arr[0];
+        long dis=1000000000;
+        //int max=Math.sqrt(arr[n-1]);
         int max=arr[n-1];
-        double diff=max-min;
-        while(min!=max){
-            int a=(min+max)/2;
-            double temp=(Math.pow(a,n+1)-1)*1.0/(a-1);
-            if(temp>total){
-                max=a;
-            }
-            else{
-                min=a;
-            }
-        }
-        no=min;
+        no=binarysearch(arr,min,max,total);
+        
+        System.out.println("Value of X -> "+no);
 
-        long cost=arr[0]-1;
+        long cost=0;
+        long cost2=0;
         int valtobe=1;
-        for(int i=1;i<n;i++){
+        for(int i=0;i<n;i++){
             int a=arr[i];
-            valtobe=valtobe*no;
-            if(a>valtobe)
-            cost+=(a-valtobe);
+            int temp=a-valtobe;
+            if(temp>=0)
+            cost=cost+temp;
             else
-            cost+=(valtobe-a);
+            cost=cost-temp;
+            cost2+=(arr[i]-1);
+            valtobe=valtobe*no;
         }
-    System.out.println(cost);
+        long m=Math.min(cost,cost2);
+    System.out.println(m);
         }
     }
-}
+        public static int binarysearch(int[]arr,int si,int ei,long total){
+            long diff=1000000000;
+            int ans=1;
+            int n=arr.length;
+            for(int i=2;i<ei;i++){
+                int a=i;
+                long temp=((long)(Math.pow(a,n)-1))/(a-1);
+                temp-=total;
+                if(temp==0)
+                return a;
+                if(temp<0)
+                temp=temp*(-1);
+                if(temp<diff){
+                    diff=temp;
+                    ans=i;
+                }else
+                break;
+            }
+            return ans;
+        }
+    }

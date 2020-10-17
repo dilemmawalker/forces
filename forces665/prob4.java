@@ -9,7 +9,7 @@ public class prob4{
             this.v=v;
             this.w=w;
         }
-    }
+    }//
     public static ArrayList<pair>[]graph;
     public static void main(String[]args){
         int t=scn.nextInt();
@@ -57,7 +57,7 @@ public class prob4{
                         for(;i<m;i++){
                             c=(c*arr[i])%mod;
                         }
-                        // c=c%mod;
+                        c=c%mod;
                         ans=(ans+(c*pq.remove())%mod)%mod;
                     }
                     else{
