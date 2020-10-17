@@ -15,18 +15,24 @@ public class prob3{
         arr2[i]=scn.nextInt();
         
         int ans=0;
-            bfs(arr1,arr2,m,0,0);
-            System.out.println(min);
+        boolean flag=false;
+        int idx=0;
+        while(!flag){
+            flag=bfs(arr1,arr2,m,0,0,idx);
+            idx++;
         }
-        public static int min=1000000;
-        public static void bfs(int[]arr1,int[]arr2,int m,int c,int idx){//apply dp
+        }
+        public static boolean bfs(int[]arr1,int[]arr2,int m,int c,int idx,int ans){
             if(idx==arr1.length){
-                min=Math.min(min,c);
-                return;
+                System.out.println(c);
+                return true;
             }
+            boolean res=false;
             for(int i=0;i<m;i++){
                 int a=arr1[idx]&arr2[i];
-                bfs(arr1,arr2,m,c|a,idx+1);
+                if((a&(~ans))==0)
+               res=res|| bfs(arr1,arr2,m,c|a,idx+1,ans);
             }
+            return res;
         }
     }
