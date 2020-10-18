@@ -8,11 +8,12 @@ public class prob3{
         int m=scn.nextInt();
         int[]arr1=new int[n];
         int []arr2=new int[m];
-        int[][]arr=new int[n][m];
-        for(int i=0;i<n;i++)
+        for(int i=0;i<n;i++){
         arr1[i]=scn.nextInt();
-        for(int i=0;i<m;i++)
+        }
+        for(int i=0;i<m;i++){
         arr2[i]=scn.nextInt();
+        }
         
         int ans=0;
         boolean flag=false;
