@@ -32,8 +32,7 @@ public class prob4{
         size1--;
         size2--;
 
-        long[][][]dp=new long[n+2][size1+2][size2+2];
-        long aa=solve(0,n,d,small,large,0,0,0,dp);
+        long aa=solve(0,n,d,small,large,0,0,0);
         System.out.println(aa);
     }
     public static long solve(int ii,int n,int d,int[]small,int[]large,long ans,int idx1,int idx2){
@@ -44,12 +43,12 @@ public class prob4{
         long aa=0;
         if(idx1<small.length){
             int a=small[idx1];
-            aa=Math.max(aa,solve(ii+1,n,d,small,large,ans+a,idx1+1,idx2,dp));
+            aa=Math.max(aa,solve(ii+1,n,d,small,large,ans+a,idx1+1,idx2));
         }
         if(idx2<large.length){
             int a=large[idx2];
             aa=Math.max(aa,solve(ii+d+1,n,d,small,large,ans+a,idx1,idx2+1));
         }
-        return dp[n][idx1][idx2]=aa;
+        return aa;
     }
 }
