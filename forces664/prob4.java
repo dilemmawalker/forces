@@ -50,5 +50,5 @@ public class prob4{
             aa=Math.max(aa,solve(ii+d+1,n,d,small,large,ans+a,idx1,idx2+1));
         }
         return aa;
-    }
+    }//
 }
