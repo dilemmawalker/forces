@@ -11,60 +11,37 @@ public class prob2{
             arr[i]=scn.nextInt();
             total+=arr[i];
         }
-        if(total==n){
-            System.out.println(0);
-        }
-        else{
         Arrays.sort(arr);
-        //
-        for(int i=0;i<n;i++)
-        System.out.print(arr[i]+" ");
-        System.out.println();
-        //
-        int no=1;
-        int min=arr[0];
+        int min=1;
+        int max=10000;
         long dis=1000000000;
-        //int max=Math.sqrt(arr[n-1]);
-        int max=arr[n-1];
-        no=binarysearch(arr,min,max,total);
-        
-        System.out.println("Value of X -> "+no);
-
-        long cost=0;
-        long cost2=0;
-        int valtobe=1;
-        for(int i=0;i<n;i++){
-            int a=arr[i];
-            int temp=a-valtobe;
-            if(temp>=0)
-            cost=cost+temp;
-            else
-            cost=cost-temp;
-            cost2+=(arr[i]-1);
-            valtobe=valtobe*no;
-        }
-        long m=Math.min(cost,cost2);
-    System.out.println(m);
-        }
+        binarysearch(min,max,0,arr);
+        System.out.println(ans);
     }
-        public static int binarysearch(int[]arr,int si,int ei,long total){
-            long diff=1000000000;
-            int ans=1;
-            int n=arr.length;
-            for(int i=2;i<ei;i++){
-                int a=i;
-                long temp=((long)(Math.pow(a,n)-1))/(a-1);
-                temp-=total;
-                if(temp==0)
-                return a;
-                if(temp<0)
-                temp=temp*(-1);
-                if(temp<diff){
-                    diff=temp;
-                    ans=i;
-                }else
-                break;
-            }
-            return ans;
+    public static long ans=1000000000;
+    public static void binarysearch(int min,int max,long ans,int[]arr){ 
+        if(min>=max)
+        return;
+        int av=(min+max)/2;
+        long dis=findans(av,arr,arr.length);
+        System.out.println(av);
+            if(dis>0)
+            binarysearch(min,av,ans,arr);
+            else if(dis<0)
+            binarysearch(av+1,max,ans,arr);
+    }
+    public static long findans(int no,int[]arr,int n){
+        long dis=0;
+        long a=0;
+        for(int i=0;i<n;i++){
+            long aa=(int)Math.pow(no,i);
+            if(i!=0  && i!=1 && aa<no)
+            aa=2000000000;
+            dis+=(aa-arr[i]);
+            a+=aa>arr[i]?aa-arr[i]:arr[i]-aa;
         }
+        System.out.println(dis+"     "+a);
+        ans=Math.min(a,ans);
+        return dis;
+    }
     }
