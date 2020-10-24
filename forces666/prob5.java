@@ -28,6 +28,6 @@ public class prob5{
             s=Math.min(solve(i+1,n,total,ans+a*r1+b*r3+d,r1,r2,r3,d,arr,boss,temp+a+b));
             arr[i]=a;
             boss[i]=b;
-        }//
+        }
     }
 }
