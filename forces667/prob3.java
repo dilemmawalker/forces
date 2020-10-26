@@ -9,7 +9,7 @@ public class prob3{
             int x=scn.nextInt();
             int y=scn.nextInt();
 
-            int c=n-1;
+            int c=n-1;//
             int diff=y-x;
             while(c>0){
                 if(diff%c==0){
