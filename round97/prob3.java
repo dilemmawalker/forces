@@ -27,14 +27,14 @@ public class prob3{
         int ii=0;
         for(int i=0;i<ar.length;i++){
             if(!ar[i]){
-                ar[i]=true;
+                // ar[i]=true;
                 int calc=i+1-arr[idx];
                 a=solve(arr,ar,idx+1,dp)+ (calc>0?calc:-calc);
                 if(a<c){
                 c=a;
                 ii=i;
                 }
-                ar[i]=false;
+                // ar[i]=false;
             }
         }
         ar[ii]=true;
