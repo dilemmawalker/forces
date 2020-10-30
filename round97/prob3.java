@@ -12,12 +12,23 @@ public class prob3{
                 arr[i]=a;
             }
             int[][]dp=new int[n][200];
-            int a=solve(arr,new boolean[200],n-1,dp);
+            int a=solve(arr,new boolean[200],0,dp);
             System.out.println(a);
+            display(dp);
+        }
+    }
+    public static void display(int[][]arr){
+        int n=arr.length;
+        int m=arr[0].length;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                System.out.print(arr[i][j]);
+            }
+            System.out.println();
         }
     }
     public static int solve(int[]arr,boolean[]ar,int idx,int [][]dp){
-        if(idx < 0){
+        if(idx == arr.length){
             return 0;
         }
         // if(dp[idx]!=0)
@@ -32,14 +43,12 @@ public class prob3{
                 if(dp[idx][i]!=0)
                 a=dp[idx][i];
                 else
-                a=solve(arr,ar,idx-1,dp)+ (calc>=0?calc:-calc);
-                if(a<c){
-                c=a;
-                }
+                a=solve(arr,ar,idx+1,dp)+ (calc>=0?calc:-calc);
+                c=Math.min(a,c);
                 ar[i]=false;
-                dp[idx][i]=c;
+                // dp[idx][i]=c;
             }
         }
-        return c;
+        return dp[idx][ii]=c;
     }
 }
