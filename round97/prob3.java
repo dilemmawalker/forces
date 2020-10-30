@@ -14,7 +14,7 @@ public class prob3{
             int[][]dp=new int[n][200];
             int a=solve(arr,new boolean[200],0,dp);
             System.out.println(a);
-            display(dp);
+            // display(dp);
         }
     }
     public static void display(int[][]arr){
@@ -46,9 +46,9 @@ public class prob3{
                 a=solve(arr,ar,idx+1,dp)+ (calc>=0?calc:-calc);
                 c=Math.min(a,c);
                 ar[i]=false;
-                // dp[idx][i]=c;
+                dp[idx][i]=c;
             }
         }
-        return dp[idx][ii]=c;
+        return c;
     }
 }
