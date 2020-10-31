@@ -11,16 +11,16 @@ public class prob3{
                 int a=scn.nextInt();
                 arr[i]=a;
             }
-            int[][]dp=new int[n][200];
+            int[][]dp=new int[n][401];
             for(int i=0;i<n;i++){
-                for(int j=0;j<200;j++){
+                for(int j=0;j<401;j++){
                     dp[i][j]=-1;
                 }
             }
             Arrays.sort(arr);
-            int a=solve(arr,new boolean[200],0,dp,0);
+            int a=solve(arr,new boolean[401],0,dp,0);
             System.out.println(a);
-            // display(dp);
+            display(dp);
         }
     }
     public static void display(int[][]arr){
@@ -37,13 +37,13 @@ public class prob3{
         if(idx == arr.length){
             return 0;
         }
-        if(iii==200)
+        if(iii>=400)
         return 100000000;
         if(dp[idx][iii]!=-1)
         return dp[idx][iii];
         int c=100000000;
         int a=0;
-        for(int i=iii;i<ar.length;i++){
+        for(int i=iii;i<400;i++){
                 int calc=i+1-arr[idx];
                 a=solve(arr,ar,idx+1,dp,i+1)+ (calc>=0?calc:-calc);
                 c=Math.min(a,c);
