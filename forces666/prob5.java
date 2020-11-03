@@ -20,14 +20,7 @@ public class prob5{
             return 0;
         }
         int s=0;
-        if(arr[i]!=0 && boss[i]!=0){
-            int a=arr[i];
-            int b=boss[i];
-            arr[i]=0;
-            boss[i]=0;
-            s=Math.min(solve(i+1,n,total,ans+a*r1+b*r3+d,r1,r2,r3,d,arr,boss,temp+a+b));
-            arr[i]=a;
-            boss[i]=b;
-        }
+        int r;
+        r=solve(i+1,n,total+)
     }
 }
