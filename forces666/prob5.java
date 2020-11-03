@@ -67,10 +67,10 @@ public class prob5{
         else if(boss[i]!=0){
             int a=boss[i];
             boss[i]=0;
-            r=solve(i+1,n,change+1,total,r1,r2,r3,arr,boss, d)+Math.min(r1,Math.min(r2,r3))+d;
+            r=solve(i+1,n,change+a,total,r1,r2,r3,arr,boss, d)+Math.min(r1,Math.min(r2,r3))+d;
             s=Math.min(s,r);
         
-            r=solve(i-1,n,change+1,total,r1,r2,r3,arr,boss, d)+Math.min(r1,Math.min(r2,r3))+d;
+            r=solve(i-1,n,change+a,total,r1,r2,r3,arr,boss, d)+Math.min(r1,Math.min(r2,r3))+d;
             s=Math.min(s,r);
         
             boss[i]=a;
