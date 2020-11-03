@@ -21,7 +21,7 @@ public class prob5{
         long [][]dp=new long[n+1][total+1];
         for(int i=0;i<n+1;i++){
             for(int j=0;j<total+1;j++){
-                dp[i][j]=-1l;
+                dp[i][j]=0l;
             }
         }
         s=solve(0,n,0,total,r1,r2,r3,arr,boss,d,dp);
@@ -40,10 +40,10 @@ public class prob5{
             dp[i][change]=-d;
             return -d;
         }
-        if(i==n || i==-1){
+        if(i==n || i<0){
             return 1000000000000l;
         }
-        if(dp[i][change]!=-1)
+        if(dp[i][change]!=0)
         return dp[i][change];
 
         long s=1000000000000l;
