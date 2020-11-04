@@ -43,8 +43,8 @@ public class prob5{
         if(i==n || i<0){
             return 10000000000l;
         }
-        // if(dp[i][change]!=0)
-        // return dp[i][change]; 
+        if(dp[i][change]!=0)
+        return dp[i][change]; 
 
         long s=10000000000l;
         long r=10000000000l;
