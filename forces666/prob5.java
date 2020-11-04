@@ -36,17 +36,17 @@ public class prob5{
     public static long solve(int i,int n,int change,int total,int r1,int r2,int r3,int[]arr,int []boss,int d,long [][]dp){
 
         if(total==change){
-            if(i!=-1)
-            dp[i][change]=-d;
+            // if(i!=-1)
+            // dp[i][change]=-d;
             return -d;
         }
         if(i==n || i<0){
-            return 1000000000000l;
+            return 10000000000l;
         }
-        if(dp[i][change]!=0)
-        return dp[i][change];
+        // if(dp[i][change]!=0)
+        // return dp[i][change]; 
 
-        long s=1000000000000l;
+        long s=10000000000l;
         long r=10000000000l;
         if(arr[i]!=0){
             int a=arr[i];
