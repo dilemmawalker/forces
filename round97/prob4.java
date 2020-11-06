@@ -15,7 +15,7 @@ public class prob4{
             LinkedList<Integer>que=new LinkedList<>();
             int idx=1;
             que.add(arr[0]);
-            while(que.size()!=0 && idx<n){
+            while(idx<n){
                 int size=que.size();
                 while(size-->0 && idx<n){
                     int a=que.removeFirst();
