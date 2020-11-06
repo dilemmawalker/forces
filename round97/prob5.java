@@ -17,7 +17,7 @@ public class prob5{
         }
         int []arr=new int[n];
         for(int i=0;i<k;i++){
-            int a=arr2[i];//
+            int a=arr2[i];
             arr[a]=arr1[a];
             //call solve recursive function for many small arrays
         }
