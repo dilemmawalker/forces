@@ -8,8 +8,8 @@ public class prob5{
         int[]arr=new int[n+2];
         int []arr2=new int[k+1];
         boolean flag=false;
-        arr[0]=-2147483648;
-        arr[n+1]=2147483647;
+        arr[0]=-2147483647;
+        arr[n+1]=2147483646;
         for(int i=1;i<n+1;i++){
             int a=scn.nextInt();
             arr[i]=a;
@@ -24,6 +24,9 @@ public class prob5{
         int si=1;
         int c=0;
         int []dp=new int[n+10];
+        for(int i=0;i<n+10;i++){
+            dp[i]=2147483647;
+        }
         for(int i=0;i<=k;i++){
             int ei=arr2[i];
            int a= solve(arr,si,ei,arr[ei],dp);
@@ -37,7 +40,7 @@ public class prob5{
         }
         if(n==k && flag)
         System.out.println(-1);
-        else 
+        else
         System.out.println(c);
         for(int i=0;i<n+9;i++){
             System.out.print(dp[i]+" ");
@@ -47,11 +50,11 @@ public class prob5{
         if(si==ei){
             return 0;
         }
-        if(dp[si]!=0 )
+        if(dp[si]!=2147483647)
         return dp[si];
 
-        int c=1000000005;
-        int a=1000000005;
+        int c=2147483647;
+        int a=2147483647;
         if(arr[si]>arr[si-1] && arr[si]<max)
         a=solve(arr,si+1,ei,max,dp);
         c=Math.min(a,c);
