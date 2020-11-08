@@ -9,7 +9,7 @@ public class prob5{
         int []arr2=new int[k+1];
         boolean flag=false;
         arr[0]=-2147483647;
-        arr[n+1]=2147483646;
+        arr[n+1]=2147483647;
         for(int i=1;i<n+1;i++){
             int a=scn.nextInt();
             arr[i]=a;
@@ -22,15 +22,17 @@ public class prob5{
         }
         arr2[k]=n+1;
         int si=1;
-        int c=0;
-        int []dp=new int[n+10];
-        for(int i=0;i<n+10;i++){
-            dp[i]=2147483647;
+        long c=0l;
+        long []dp1=new long[214748364];
+        long []dp2=new long[214748364];
+        for(int i=0;i<2147483647;i++){
+            dp1[i]=2147483647;
+            dp2[i]=2147483647;
         }
         for(int i=0;i<=k;i++){
             int ei=arr2[i];
-           int a= solve(arr,si,ei,arr[ei],dp);
-           if(a<=1000000)
+           long a= solve(arr,si,ei,arr[ei],dp1,dp2);
+           if(a<=1000000)   //check?
            c+=a;
            else{
                c=-1;
@@ -42,30 +44,48 @@ public class prob5{
         System.out.println(-1);
         else
         System.out.println(c);
-        for(int i=0;i<n+9;i++){
-            System.out.print(dp[i]+" ");
-        }
+        // for(int i=0;i<n+1;i++){
+        //     System.out.print(dp[i]+" ");
+        // }
     }
-    public static int solve(int[]arr,int si,int ei,int max,int[]dp){
+    public static long solve(int[]arr,int si,int ei,int max,long[]dp1,long[]dp2){
         if(si==ei){
             return 0;
         }
-        if(dp[si]!=2147483647)
-        return dp[si];
-
-        int c=2147483647;
-        int a=2147483647;
-        if(arr[si]>arr[si-1] && arr[si]<max)
-        a=solve(arr,si+1,ei,max,dp);
-        c=Math.min(a,c);
+        
+        int nn=0;
+        long c=2147483647;
+        long a=2147483647;
+        if(arr[si]>arr[si-1] && arr[si]<max){
+            if(dp2[arr[si]]!=2147483647)
+            a=dp2[arr[si]];
+            else
+        a=solve(arr,si+1,ei,max,dp1,dp2);
+        }
+        if(a<c){
+            c=a;
+            nn=arr[si];
+        }
         int no=arr[si-1]+1;
         if(no<max){
             int save=arr[si];
             arr[si]=no;
-            a=solve(arr,si+1,ei,max,dp)+1;
+            if(no<0 && dp1[no+2147483647]!=2147483647)
+            a=dp1[no+2147483647];
+            else if(no>=0 && dp2[no]!=2147483647)
+            a=dp2[no];
+            else
+            a=solve(arr,si+1,ei,max,dp1,dp2)+1;
             arr[si]=save;
-            c=Math.min(c,a);
+            if(a<c){
+                c=a;
+                nn=no;
+            }
         }
-        return dp[si]=c;
+        if(nn<0)
+        dp1[nn+2147483647]=c;
+        else
+        dp2[nn]=c;
+        return c;
     }
 }
