@@ -1,8 +1,8 @@
 import java.util.*;
 import java.io.*;
-public class prob5{
+public class prob5_map{
     public static Scanner scn=new Scanner(new InputStreamReader(System.in));
-    public static void main(String[]args){
+    public static void main(String[]args){  
         int n=scn.nextInt();
         int k=scn.nextInt();
         int[]arr=new int[n+2];
@@ -22,22 +22,18 @@ public class prob5{
         }
         arr2[k]=n+1;
         int si=1;
+        
+       HashMap<Integer,Integer> []dp=new HashMap[n+1];
+       for(int i=0;i<n+1;i++){
+        dp[i]=new HashMap<Integer,Integer>();
+        }
         int c=0;
-        int size1=5*(int)1e3;
-        int size2=5*(int)1e3;
-        int []dp1=new int[size1];
-        int []dp2=new int[size2];
-        for(int i=0;i<size1;i++){
-            dp1[i]=2147483647;
-        }
-        for(int i=0;i<size2;i++){
-            dp2[i]=2147483647;
-        }
         for(int i=0;i<=k;i++){
             int ei=arr2[i];
-            int a= solve(arr,si,ei,arr[ei],dp1,dp2);
-           if(a<=1000000)   //check?
+            int a= solve(arr,si,ei,arr[ei],dp);
+           if(a<=500000){   //check?
            c+=a;
+           }
            else{
                c=-1;
                break;
@@ -48,11 +44,11 @@ public class prob5{
         System.out.println(-1);
         else
         System.out.println(c);
-        // for(int i=0;i<n+1;i++){
-        //     System.out.print(dp1[i]+" ");
-        // }
+        for(int i=0;i<n+1;i++){
+            System.out.print(dp[i]+"  ");
+        }
     }
-    public static int solve(int[]arr,int si,int ei,int max,int[]dp1,int[]dp2){
+    public static int solve(int[]arr,int si,int ei,int max,HashMap<Integer,Integer> []dp){
         if(si==ei){
             return 0;
         }
@@ -60,11 +56,13 @@ public class prob5{
         int nn=0;
         int c=2147483647;
         int a=2147483647;
+        HashMap<Integer,Integer>m=dp[si];
         if(arr[si]>arr[si-1] && arr[si]<max){
-            if(dp2[arr[si]]!=2147483647)
-            a=dp2[arr[si]];
+            
+            if(m.containsKey(arr[si]))
+            a=m.get(arr[si]);
             else
-        a=solve(arr,si+1,ei,max,dp1,dp2);
+        a=solve(arr,si+1,ei,max,dp);
         }
         if(a<c){
             c=a;
@@ -74,22 +72,22 @@ public class prob5{
         if(no<max){
             int save=arr[si];
             arr[si]=no;
-            if(no<0 && dp1[no+2147483647]!=2147483647)
-            a=dp1[no+2147483647];
-            else if(no>=0 && dp2[no]!=2147483647)
-            a=dp2[no];
-            else
-            a=solve(arr,si+1,ei,max,dp1,dp2)+1;
+            if(m.containsKey(arr[si]))
+            a=m.get(arr[si]);
+            else{
+            a=solve(arr,si+1,ei,max,dp);
+                if(a!=2147483647)
+                a+=1;
+            }
             arr[si]=save;
             if(a<c){
                 c=a;
                 nn=no;
             }
         }
-        if(nn<0)
-        dp1[nn+2147483647]=c;
-        else
-        dp2[nn]=c;
+        m.put(nn,c);
+        if(c!=2147483647)
+       dp[si]=m;
         return c;
     }
 }
