@@ -19,7 +19,7 @@ public class prob1{
             for(int i=0;i<=x;i++){
                 for(int j=0;j<=y;j++){
                     for(int k=0;k<=3;k++)
-                    System.out.print(dp[i][j][k]+" ");
+                    System.out.print(dp[i][j][k]+" ");//
                 }
                 System.out.println();
             }
