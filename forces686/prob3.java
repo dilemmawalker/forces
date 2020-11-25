@@ -12,7 +12,7 @@ public class prob3{
                 int a=scn.nextInt();
                 arr[i]=a;
                 freq[a]++;
-            }
+            }//
             int b=10000000;
             for(int i=1;i<=n;i++){
                 if(freq[i]>0)
