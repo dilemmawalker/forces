@@ -11,27 +11,32 @@ public class prob2{
                 int a=scn.nextInt();
                 arr[i]=a;
             }
-            System.out.print(arr[0]);
+            // System.out.print(arr[0]);
             int p=arr[0];
-            for(int i=1;i<n;i++){
-                int a=arr[i];
-                if(a>=arr[i-1]){
-                    int m=a/p;
-                    int ans1=m*p;
-                    int ans2=m*(p+1);
-                    int ans1=((a-ans1)<=(ans2-a))?ans1:ans2;
-                    p=ans1;
-                    System.out.print(p);
+            long even=0l;
+            long odd=0l;
+            for(int i=0;i<n;i++){
+                if(i%2==0)
+                even+=arr[i];
+                else
+                odd+=arr[i];
+            }
+            int m=0;
+            if(even>=odd)
+            m=0;
+            else
+            m=1;
+
+            for(int i=0;i<n;i++){
+                if(m==i){
+                    System.out.print(arr[i]+" ");
+                    m+=2;
                 }
                 else{
-                    int m=p/a;
-                    int ans1=m*a;
-                    int ans2=m*(a+1);
-                    int ans1=((a-ans1)<=(ans2-a))?ans1:ans2;
-                    p=ans1;
-                    System.out.print(p);
+                    System.out.print("1 ");
                 }
             }
+            System.out.println();
         }
     }
 }
