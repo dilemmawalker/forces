@@ -7,7 +7,7 @@ public class prob4{
             String str=scn.next();
             int x=scn.nextInt();
             int y=scn.nextInt();
-            int lz=0,rz=0,lo=0,ro=0;
+            long lz=0l,rz=0l,lo=0l,ro=0l;
             int n=str.length();
             for(int i=0;i<n;i++){
                 char ch=str.charAt(i);
@@ -37,8 +37,8 @@ public class prob4{
                     long val1=0l;
                     long val2=0l;
 
-                    val1=lo*y + ro*x;
-                    val2=lz*x + rz*y;
+                    val1=(long)((long)((long)lo*(long)y) + (long)((long)ro*(long)x));
+                    val2=(long)((long)((long)lz*(long)x) + (long)((long)rz*(long)y));
                 
                 if(val1<=val2)
                 strr.setCharAt(i, '0');
@@ -46,8 +46,8 @@ public class prob4{
                 strr.setCharAt(i, '1');
                 }
             }
-            rz=0;
-            ro=0;
+            rz=0l;
+            ro=0l;
             for(int i=0;i<n;i++){
                 char ch=strr.charAt(i);
                 if(ch=='0'){
@@ -62,11 +62,11 @@ public class prob4{
                 char ch=strr.charAt(i);
                if(ch=='0'){
                    rz--;
-                cc+=(x*ro);
+                cc=(long)((long)((long)x*(long)ro)+ ((long)cc));
                }
                else if(ch=='1'){
                    ro--;
-                   cc+=(y*rz);
+                   cc=(long)((long)((long)y*(long)rz) + ((long)cc));
                }
             }
             System.out.println(cc);
