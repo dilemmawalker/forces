@@ -37,8 +37,8 @@ public class prob4{
                     long val1=0l;
                     long val2=0l;
 
-                    val1=(long)((long)((long)lo*(long)y) + (long)((long)ro*(long)x));
-                    val2=(long)((long)((long)lz*(long)x) + (long)((long)rz*(long)y));
+                    val1=lo*y + ro*x;
+                    val2=lz*x + rz*y;
                 
                 if(val1<=val2)
                 strr.setCharAt(i, '0');
