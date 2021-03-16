@@ -7,7 +7,7 @@ public class prob3{
             int n=scn.nextInt();
             int[]arr=new int[n];
             for(int i=0;i<n;i++){
-                int a=scn.nextInt();
+                int a=scn.nextInt();//
                 arr[i]=a;
             }
             Arrays.sort(arr);
