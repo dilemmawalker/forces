@@ -11,7 +11,7 @@ public class prob2 {
             int maxCreditAmount = scn.nextInt();
 
             int[]bankAmount = new int[noOfBanks];
-            int totalAmt = 0;
+            long totalAmt = 0l;
             for(int i=0; i<noOfBanks; i++){
                 int currBankAmount = scn.nextInt();
                 bankAmount[i] = currBankAmount;
@@ -20,12 +20,12 @@ public class prob2 {
             int[]lossArray = new int[noOfBanks];
 
             createLossArray(lossArray, bankAmount, maxTransferAmount, maxCreditAmount);
-            int lossAmt = 0;
+            long lossAmt = 0l;
             for(int i=0; i<noOfBanks; i++) {
                 lossAmt += lossArray[i];
             }
             int maxLoss = findMaxLoss(lossArray);
-            int finalAns = totalAmt - lossAmt + maxLoss;
+            long finalAns = totalAmt - lossAmt + maxLoss;
 
             System.out.println(finalAns);
         }
