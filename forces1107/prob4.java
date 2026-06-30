@@ -7,21 +7,32 @@ public class prob4 {
         int t = scn.nextInt();
         while(t-->0) {
 
-        int n = scn.nextInt();
-        String s = scn.next();
-        int change = 0;
+            int n = scn.nextInt();
+            int[]arr1 = new int[n];
+            int[]arr2 = new int[n];
 
-        for(int i=0; i<n-1; i++) {
-            char ch = s.charAt(i);
-            char ch2 = s.charAt(i+1);
+            int max = Integer.MIN_VALUE;
+            int min = Integer.MAX_VALUE;
 
-            if(ch!=ch2)
-            change++;
+            for(int i=0; i<n; i++) {
+                arr1[i] = scn.nextInt();
+            }
+            for(int i=0; i<n; i++) {
+                arr2[i] = scn.nextInt();
+
+                int diff = arr2[i] - arr1[i];
+
+                max = Math.max(max, diff);
+                min = Math.min(max, diff);
+            }
+
+            // System.out.println("this is: "+ max + " "+ min);
+
+            if(max - Math.abs(min) == 0) {
+                System.out.println("yes");
+            } else {
+            System.out.println("no");
+            }
         }
-
-        if(change == 1)
-        System.out.println(2);
-        else
-        System.out.println(1);
-    }}
+    }
 }
